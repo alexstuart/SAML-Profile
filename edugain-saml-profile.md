@@ -103,7 +103,7 @@ The eduGAIN Metadata Distribution Service conforms to the rules for Metadata Con
 
 In order to assure SAML Metadata integrity, each federation aggregate produced for aggregation in eduGAIN MUST be signed as specified in Metadata for the OASIS Security Assertion Markup Language (SAML) V2.0 [SAMLMeta].
 
-SAML Metadata Producers MUST ensure that their SAML Metadata signature meets the following requirements.
+SAML Metadata Producers MUST ensure that their SAML Metadata signature meets the following requirements:
 
 * The signature is made using an explicit ID reference, not an empty reference.
 * The signature reference refers to the document element.
