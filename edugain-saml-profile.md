@@ -103,17 +103,25 @@ The eduGAIN Metadata Distribution Service conforms to the rules for Metadata Con
 
 In order to assure SAML Metadata integrity, each federation aggregate produced for aggregation in eduGAIN MUST be signed as specified in Metadata for the OASIS Security Assertion Markup Language (SAML) V2.0 [SAMLMeta].
 
-SAML Metadata Producers MUST ensure that their SAML Metadata signature meets the following requirements:
+SAML Metadata Producers MUST ensure that their SAML Metadata signature meets the following requirements.
 
-* Public keys used for signing are at least 2048 bits in length.  At least 3072 bits is RECOMMENDED for new deployments. 
-* EC public keys are at least 256 bits in length.
 * The signature is made using an explicit ID reference, not an empty reference.
 * The signature reference refers to the document element.
-* The signature's digest algorithm is at least as strong as SHA-256, and does not use MD5 or SHA-1.
-* The signature's signature method is RSA with an associated digest at least as strong as SHA-256 and does not use MD5 or SHA-1.
 * The signature's transforms contain only these permissible values:
   * Enveloped signature.
   * Exclusive canonicalisation with or without comments.
+* Security strength of the digital signature as a whole must be 112 bits or higher [NIST800-57].
+* Security strength of 112 bits is deprecated after 2030 [NIST800-131A].
+
+### Requirements for RSA keys
+
+* RSA public keys used for signing are at least 2048 bits in length. 2048 bit keys are deprecated after 2030. At least 3072 bits are RECOMMENDED for new deployments. 
+* The signature's signature method is RSA with an associated digest at least as strong as SHA-256 and does not use MD5 or SHA-1.
+
+### Requirements for Elliptic Curve keys
+
+* EC public keys used for signing are at least 256 bits in length. 256 bit keys are deprecated after 2030. At least 383 bits are RECOMMENDED for new deployments.
+* The signature's signature method is ECDSA with an associated digest at least as strong as SHA-256 and does not use MD5 or SHA-1.
 
 ## 5. SAML Metadata Publication
 
@@ -149,6 +157,8 @@ For more information on how validations and warnings are supported by the eduGAI
 * [eduGAIN-VAL] eduGAIN Metadata Validator: https://validator.edugain.org/
 * [MDRPI] SAML V2.0 Metadata Extensions for Registration and Publication Information Version 1.0: http://docs.oasis-open.org/security/saml/Post2.0/saml-metadata-rpi/v1.0/saml-metadata-rpi-v1.0.pdf
 * [MDUI] SAML V2.0 Metadata Extensions for Login and Discovery User Interface Version 1.0: http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-metadata-ui/v1.0/sstc-saml-metadata-ui-v1.0.pdf
+* [NIST800-57] NIST Recommendation for key management:  Part 1 – General: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r4.pdf
+* [NIST800-131A] NIST Transitioning the Use of Cryptographic Algorithms and Key Lengths: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar3.ipd.pdf
 * [REFEDS-MRPS] REFEDS Metadata Registration Practice Statement Template: https://github.com/REFEDS/MRPS
 * [RFC2119] Bradner, S., “Key words for use in RFCs to Indicate Requirement Levels”, BCP 14, RFC 2119, March 1997: https://www.ietf.org/rfc/rfc2119.txt
 * [SAMLCore] Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0: http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf
